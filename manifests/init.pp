@@ -50,6 +50,7 @@ class kibana5 (
   $service_name         = 'kibana',
   $config               = undef,
   $plugins              = undef,
+  $config_dir           = '/etc/kibana',
   $install_dir          = '/usr/share/kibana',
   $bin_dir              = '/usr/share/kibana/bin',
 ) {

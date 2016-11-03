@@ -16,7 +16,8 @@ describe 'kibana5', :type => 'class' do
     let(:params) {{
       :plugins                 => {
         'elasticsearch/marvel' => {
-         'ensure'              => 'present'
+         'ensure'              => 'present',
+         'plugin_dest_dir'     => 'marvel',
         }
       }
     }}

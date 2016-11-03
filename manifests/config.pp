@@ -12,13 +12,14 @@
 # Matt Wise <matt@nextdoor.com>
 #
 class kibana5::config (
-  $config = $kibana5::config,
+  $config     = $kibana5::config,
+  $config_dir = $kibana5::config_dir,
 ) inherits kibana5 {
 
   if $config {
     file { 'kibana-config-file':
       ensure  => file,
-      path    => '/opt/kibana/config/kibana.yml',
+      path    => "${config_dir}/kibana.yml",
       owner   => 'kibana',
       group   => 'kibana',
       mode    => '0755',
