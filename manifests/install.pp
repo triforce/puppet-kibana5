@@ -33,7 +33,7 @@ class kibana5::install (
       'Debian': {
         include ::apt
         apt::source { "kibana-${package_repo_version}":
-          location => "http://artifacts.elastic.co/packages/${package_repo_version}/debian",
+          location => "http://artifacts.elastic.co/packages/${package_repo_version}/apt",
           release  => 'stable',
           repos    => 'main',
           key      => {
