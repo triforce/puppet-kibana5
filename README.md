@@ -109,13 +109,11 @@ class { 'kibana5':
   plugins => {
     'elasticsearch/marvel' => {
        kibana5_plugin_dir => '/opt/kibana/installedPlugins', # optional - this is the default
-       plugin_dest_dir    => 'marvel',                       # mandatory - plugin will be installed in ${kibana5_plugin_dir}/${plugin_dest_dir}
        url                => 'http://your_custom_url',       # necessary if using arbitrary URL
        ensure             => present,                        # mandatory - either 'present' or 'absent'
     },
     'elastic/sense' => {
        ensure          => present,
-       plugin_dest_dir => 'sense',
     },
   }
 }

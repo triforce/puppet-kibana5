@@ -7,21 +7,17 @@ describe 'kibana5::plugin', :type => 'define' do
   context 'simple marvel example' do
     let(:params) {{
       :ensure          => 'present',
-      :plugin_dest_dir => 'marvel',
-      
     }}
     it do
       should compile.with_all_deps
       should contain_exec('install_kibana_plugin_UNITTEST').with(
-        'command' => '/usr/share/kibana/bin/kibana-plugin install UNITTEST -d /usr/share/kibana/plugins/marvel')
+        'command' => '/usr/share/kibana/bin/kibana-plugin install UNITTEST')
     end
   end
 
   context 'simple marvel example absent' do
     let(:params) {{
       :ensure          => 'absent',
-      :plugin_dest_dir => 'marvel',
-      
     }}
     it do
       should compile.with_all_deps

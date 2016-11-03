@@ -17,7 +17,6 @@ describe 'kibana5', :type => 'class' do
       :plugins                 => {
         'elasticsearch/marvel' => {
          'ensure'              => 'present',
-         'plugin_dest_dir'     => 'marvel',
         }
       }
     }}
