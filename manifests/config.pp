@@ -18,12 +18,13 @@ class kibana5::config (
 
   if $config {
     file { 'kibana-config-file':
-      ensure  => file,
-      path    => "${config_dir}/kibana.yml",
-      owner   => 'kibana',
-      group   => 'kibana',
-      mode    => '0755',
-      content => template('kibana5/kibana.yml.erb'),
+      ensure    => file,
+      path      => "${config_dir}/kibana.yml",
+      owner     => 'kibana',
+      group     => 'kibana',
+      mode      => '0755',
+      content   => template('kibana5/kibana.yml.erb'),
+      show_diff => false,
     }
   }
 }
