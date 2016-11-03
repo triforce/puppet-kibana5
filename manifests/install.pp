@@ -24,7 +24,7 @@ class kibana5::install (
           enabled  => '1',
           gpgcheck => '1',
           gpgkey   => 'https://artifacts.elastic.co/GPG-KEY-elasticsearch',
-          descr    => "Kibana repository for ${package_repo_version}.x packages",
+          descr    => "Kibana repository for ${package_repo_version} packages",
           proxy    => $package_repo_proxy,
           before   => Package['kibana5'],
         }
@@ -33,7 +33,7 @@ class kibana5::install (
       'Debian': {
         include ::apt
         apt::source { "kibana-${package_repo_version}":
-          location => "http://artifacts.elastic.co/packages/${package_repo_version}.x/debian",
+          location => "http://artifacts.elastic.co/packages/${package_repo_version}/debian",
           release  => 'stable',
           repos    => 'main',
           key      => {

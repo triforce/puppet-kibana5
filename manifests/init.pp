@@ -41,15 +41,17 @@
 #   see README file
 #
 class kibana5 (
-  $version                       = '5.0.0',
-  $manage_repo                   = true,
-  $package_repo_version          = '5.x',
-  $package_repo_proxy            = undef,
-  $service_ensure                = true,
-  $service_enable                = true,
-  $service_name                  = 'kibana',
-  $config                        = undef,
-  $plugins                       = undef,
+  $version              = '5.0.0',
+  $manage_repo          = true,
+  $package_repo_version = '5.x',
+  $package_repo_proxy   = undef,
+  $service_ensure       = true,
+  $service_enable       = true,
+  $service_name         = 'kibana',
+  $config               = undef,
+  $plugins              = undef,
+  $install_dir          = '/usr/share/kibana',
+  $bin_dir              = '/usr/share/kibana/bin',
 ) {
 
   validate_bool($manage_repo)

@@ -8,7 +8,7 @@ describe 'kibana5::install', :type => 'class' do
     it do
       should compile.with_all_deps
       should contain_yumrepo('kibana-5.x').with(
-        'baseurl' => /packages\/5.x/,
+        'baseurl' => /packages\/5.x\//,
         'descr'   => /for 5.x/)
       should contain_package('kibana5').with(
         'ensure' => '5.0.0')
@@ -21,7 +21,7 @@ describe 'kibana5::install', :type => 'class' do
       should compile.with_all_deps
       should contain_class('apt')
       should contain_apt__source('kibana-5.x').with(
-        'location' => /packages\/5.x/)
+        'location' => /packages\/5.x\//)
       should contain_package('kibana5').with(
         'ensure' => '5.0.0')
     end
