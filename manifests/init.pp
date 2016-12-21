@@ -77,7 +77,7 @@ class kibana5 (
   include kibana5::service
 
   Class['kibana5::install'] ->
-  Class['kibana5::config'] ->
+  Class['kibana5::config'] ~>
   Class['kibana5::service']
 
   Kibana4::Plugin {
