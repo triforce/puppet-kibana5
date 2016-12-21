@@ -25,7 +25,6 @@ class kibana5::config (
       mode      => '0755',
       content   => template('kibana5/kibana.yml.erb'),
       show_diff => false,
-      notify    => Service['kibana5']
     }
   }
 }
