@@ -1,0 +1,13 @@
+[Unit]
+Description=Kibana 5
+
+[Service]
+Type=simple
+User=<%= scope.lookupvar('kibana5::user') %>
+Group=<%= scope.lookupvar('kibana5::group') %>
+RuntimeDirectory=kibana
+Environment=BABEL_CACHE_PATH=/run/kibana/babel.json
+ExecStart=<%= scope.lookupvar('kibana5::bin_dir') %>/kibana
+
+[Install]
+WantedBy=multi-user.target

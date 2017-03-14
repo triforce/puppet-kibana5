@@ -32,6 +32,9 @@
 # [*service_name*]
 # Name of the Kibana4 service. Defaults to 'kibana'.
 #
+# [*manage_service_file*]
+# Whether or not to manage the systemd unit file. Defaults to 'true'.
+#
 # [*babel_cache_path*]
 # Kibana uses babel (https://www.npmjs.com/package/babel) which writes it's
 # cache to this location
@@ -48,6 +51,10 @@ class kibana5 (
   $service_ensure       = true,
   $service_enable       = true,
   $service_name         = 'kibana',
+  $user                 = 'kibana',
+  $group                = 'kibana',
+  $manage_service_file  = true,
+  $service_template     = 'kibana5/kibana.service.erb',
   $config               = undef,
   $plugins              = undef,
   $config_dir           = '/etc/kibana',
@@ -62,7 +69,12 @@ class kibana5 (
   }
 
   case $::osfamily {
-    'Debian': {    $service_provider = debian }
+    'Debian': {
+      case $::operatingsystemmajrelease {
+        '8': {     $service_provider = systemd }
+        default: { $service_provider = debian }
+      }
+    }
     'RedHat': {
       case $::operatingsystemmajrelease {
         '7': {     $service_provider = systemd }
@@ -80,7 +92,7 @@ class kibana5 (
   Class['kibana5::config'] ~>
   Class['kibana5::service']
 
-  Kibana4::Plugin {
+  Kibana5::Plugin {
     require => Class['kibana5::install']
   }
 
