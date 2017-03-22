@@ -6,9 +6,11 @@ describe 'kibana5::service', :type => 'class' do
     it do
       should compile.with_all_deps
       should contain_service('kibana5').with(
-        'ensure'   => true,
-        'enable'   => true,
-        'provider' => 'debian')
+        'ensure'           => true,
+        'enable'           => true,
+        'provider'         => 'debian',
+        'service_name'     => 'kibana',
+        'service_template' => 'kibana5/kibana.service.erb')
     end
   end
 
@@ -20,9 +22,11 @@ describe 'kibana5::service', :type => 'class' do
     it do
       should compile.with_all_deps
       should contain_service('kibana5').with(
-        'ensure'   => true,
-        'enable'   => true,
-        'provider' => 'systemd')
+        'ensure'           => true,
+        'enable'           => true,
+        'provider'         => 'systemd',
+        'service_name'     => 'kibana',
+        'service_template' => 'kibana5/kibana.service.erb')
     end
   end
 
@@ -34,9 +38,11 @@ describe 'kibana5::service', :type => 'class' do
     it do
       should compile.with_all_deps
       should contain_service('kibana5').with(
-        'ensure'   => true,
-        'enable'   => true,
-        'provider' => 'init')
+        'ensure'           => true,
+        'enable'           => true,
+        'provider'         => 'init',
+        'service_name'     => 'kibana',
+        'service_template' => 'kibana5/kibana.service.erb')
     end
   end
 
